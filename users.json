@@ -1,0 +1,33 @@
+[
+  {
+    "firstName": "sk",
+    "lastName": "k",
+    "email": "kswapnil@gmail.com",
+    "password": "1234567",
+    "birthDate": "15/08/1990"
+  },
+  {
+    "firstName": "swapnil",
+    "lastName": "killedar",
+    "email": "kswapnil901@gmail.com",
+    "password": "whitewolf",
+    "birthDate": "15/08/1990",
+    "id": "e0851bba-b643-4a91-a62d-ff35cdd6286b"
+  },
+  {
+    "firstName": "shwetali",
+    "lastName": "salokhe",
+    "email": "kshweatli@gmail.com",
+    "password": "salokhe",
+    "birthDate": "07/09/1990",
+    "id": "d29d2af3-ae9b-4309-ae07-515c11990867"
+  },
+  {
+    "firstName": "ridhima",
+    "lastName": "killedar",
+    "email": "kridhima901@gmail.com",
+    "password": "1234565465646",
+    "birthDate": "07/07/2017",
+    "id": "c05dc3ed-c9f9-4830-b00a-24ca37779ac6"
+  }
+]
