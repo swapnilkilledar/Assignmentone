@@ -90,3 +90,35 @@ export const changePassword = (req, res) =>{
 
 }
 
+export const userList = (req, res) => {
+    fs.readFile('./users.json', 'utf-8', (err, jsonString) => {
+        let users = JSON.parse(jsonString)
+       
+        if (req.query.age){   
+            users =users.filter(user => getAge(user)>req.query.age)
+        } 
+        
+        if (req.query.firstName ){
+            users =users.filter(user => getFirstChar(req, user)) 
+        } 
+        res.send(users)
+    })
+} 
+
+ function getAge (user)  {
+    var today = new Date();
+    var birthDate = user.birthDate
+    var birDate = new Date(birthDate)
+    var age = today.getFullYear() - birDate.getFullYear();
+    var m = today.getMonth() - birDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birDate.getDate())) 
+    {
+        age--;
+    }
+    return age;    
+}
+ 
+function getFirstChar (req,user) {
+    return user.firstName.startsWith(req.query.firstName);
+
+}
