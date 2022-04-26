@@ -4,20 +4,20 @@ import fs from 'fs';
 
 
 
-export const createBook = (req,res) =>{
+export const createBook = (req,res) => {
         const book =req.body
-        fs.readFile('./book.json','utf-8',(err, jsonString)=>{
-            console.log(jsonString)
+        fs.readFile('./book.json', 'utf-8', (err, jsonString)=>{
+            console.log (jsonString)
             const data = JSON.parse(jsonString)
-            let bookUser = data.filter((user)=>user.name == req.body.name)
-                if (bookUser.length > 0) {
-                    console.log("Book Already Exists")
-                    res.send(`Book with name ${req.body.name} is already exists in Liabrary`)
+            let bookUser = data.filter((book) => book.name == req.body.name)
+                if ( bookUser.length > 0) {
+                    console.log(" Book Already Exists ")
+                    res.send( ` Book with name ${req.body.name} is already exists in Liabrary `)
                 } else {
                     data.push( {...book, id:uuidv4()}) 
-                    fs.writeFile('./book.json', JSON.stringify( data ,null, 2),err=> {
-                    })
-                    res.send(`Book with name ${req.body.name} is added in Liabrary`)
+                        fs.writeFile('./book.json', JSON.stringify( data , null, 2), err=> {
+                        })
+                     res.send(`Book with name ${req.body.name} is added in Liabrary`)
                 }
         })
 }
@@ -25,17 +25,12 @@ export const createBook = (req,res) =>{
 export const getBook =(req, res) =>{
         const { id } = req.params;
         fs.readFile('./book.json','utf-8',(err, jsonString) => {
-        const data = JSON.parse(jsonString)
-        let bookUser = data.find((book)=>book.id == id)
-           
-                res.send(bookUser)
-            
-    })
+        const data = JSON.parse (jsonString)
+        let bookUser = data.find((book) => book.id == id)
+        res.send(bookUser)       
+        })
             
 }
-
-
-
 
 export const editBook = (req, res) =>{
     fs.readFile('./book.json','utf-8',(err,jsonString)=>{
@@ -79,7 +74,30 @@ fs.readFile('./book.json','utf-8',(err, jsonString)=>{
 
 export const getAllBooks = (req,res) => {
     fs.readFile('./book.json','utf-8',(err, jsonString)=>{
-        const data = JSON.parse(jsonString)
+    const data = JSON.parse(jsonString)
     res.send(data)
     })
+}
+
+
+export const queryCase = (req, res) =>{
+    fs.readFile( './book.json', 'utf-8', (err , jsonString)=>{
+        let books = JSON.parse(jsonString)
+        
+        if (req.query.publication) {
+            books = books.filter( book => publicationCompany(req,book))
+        }
+        if (req.query.author) {
+            books = books.filter( book => authorName(req , book))
+        }
+        res.send (books)
+    })
+}
+
+function authorName (req, book) {
+    return book.author.startsWith(req.query.author)
+} 
+
+function publicationCompany (req, book){
+    return book.publication.startsWith(req.query.publication)
 }

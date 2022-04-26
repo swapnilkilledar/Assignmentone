@@ -1,21 +1,25 @@
 [
   {
-    "name": "Yugandhar",
-    "author": "vishwas patil",
-    "publication": "Mehta",
-    "price": "1500",
-    "id": "a43d49bc-25a2-4384-ae30-bbc945d057ac"
+   "firstName":"Swapnil",
+   "lastName":"Killedar",
+   "email":"kswapnil901@gmail.com",
+   "age": 32,
+   "isAdmin": "True"
+
+
   },
   {
-    "name": "Yug",
-    "author": "Shivaji sawant",
-    "publication": "Mehta",
-    "price": "1500"
+    "firstName":"Shwetali",
+    "lastName":"Killedar",
+    "email":"shwetalisalokhe@gmail.com",
+    "age": 32,
+    "isAdmin": "False"
   },
   {
-    "name": "Swami",
-    "author": "Ranjit Desai",
-    "publication": "Mehta",
-    "price": "1500"
+    "firstName":"Bandopant",
+   "lastName":"Killedar",
+   "email":"bskmh@gmail.com",
+   "age": 70,
+   "isAdmin": "False"
   }
 ]
